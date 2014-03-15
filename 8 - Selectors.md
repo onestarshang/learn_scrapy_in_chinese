@@ -1,6 +1,4 @@
-
 #Selectors
-----
 当你爬取网页时，你最常做的事情就是从HTML网页中抓取数据。这里有一些可用的库帮助你完成这件事情：
  - BeautyfulSoup在python程序员中非常流行的一个库，它可以将HTML页面源码转化为对象，并且可以很好的处理较差的HTML语言标记，它的缺点是：太慢。
  - lxml是根据python的ElementTree的API实现的XML解析（也可以进行HTML解析）的库。
@@ -47,18 +45,18 @@ class MySpider(Spider):
 
 根据上面的HTML代码，我们来生成一个提取title标签中文本的XPath。
 
-<code>>>> sel.xpath('//title/text()')
-[<Selector (text) xpath=//title/text()>]</code>
+    >>> sel.xpath('//title/text()')
+    [<Selector (text) xpath=//title/text()>]</code>
 
 如你所见，<code> .xpath()</code>返回一个<code>SelectorList</code>实例，它是一个列出了新的selectors的列表（list）。这个API可以很快的选取嵌套的数据。
 
 要想真正的提取文本信息，你必须调用selector的<code>.extract()</code>方法：
-<code>>>> sel.xpath('//title/text()').extract()
-[u'Example website']</code>
+    >>> sel.xpath('//title/text()').extract()
+    [u'Example website']</code>
 
 值得注意的是CSS的selector用的是CSS3 pseudo-elements提取文本或者属性节点：
-<code>>>> sel.css('title::text').extract()
-[u'Example website']</code>
+    >>> sel.css('title::text').extract()
+    [u'Example website']
 
 现在我们来获取一下常规的URL和一些图片的链接：
 <code>>>> sel.xpath('//base/@href').extract()
