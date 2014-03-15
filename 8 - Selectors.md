@@ -51,41 +51,44 @@ class MySpider(Spider):
 如你所见，<code> .xpath()</code>返回一个<code>SelectorList</code>实例，它是一个列出了新的selectors的列表（list）。这个API可以很快的选取嵌套的数据。
 
 要想真正的提取文本信息，你必须调用selector的<code>.extract()</code>方法：
+    
     >>> sel.xpath('//title/text()').extract()
     [u'Example website']</code>
 
 值得注意的是CSS的selector用的是CSS3 pseudo-elements提取文本或者属性节点：
+    
     >>> sel.css('title::text').extract()
     [u'Example website']
 
 现在我们来获取一下常规的URL和一些图片的链接：
+    
     >>> sel.xpath('//base/@href').extract()
     [u'http://example.com/']
-
+    
     >>> sel.css('base::attr(href)').extract()
     [u'http://example.com/']
-
+    
     >>> sel.xpath('//a[contains(@href, "image")]/@href').extract()
     [u'image1.html',
      u'image2.html',
      u'image3.html',
      u'image4.html',
      u'image5.html']
-
+     
     >>> sel.css('a[href*=image]::attr(href)').extract()
     [u'image1.html',
      u'image2.html',
      u'image3.html',
      u'image4.html',
      u'image5.html']
-
+     
     >>> sel.xpath('//a[contains(@href, "image")]/img/@src').extract()
     [u'image1_thumb.jpg',
      u'image2_thumb.jpg',
      u'image3_thumb.jpg',
      u'image4_thumb.jpg',
      u'image5_thumb.jpg']
-
+     
     >>> sel.css('a[href*=image] img::attr(src)').extract()
     [u'image1_thumb.jpg',
      u'image2_thumb.jpg',
@@ -96,6 +99,7 @@ class MySpider(Spider):
  
  ###嵌套（遍历）selectors
  selector的提取节点的方法（<code>.xpath()</code>or <code>.css()</code>）返回的是相同selector类型的列表，所以你也可以调用他们的提取节点的方法。这里有个例子：
+    
     >>> links = sel.xpath('//a[contains(@href, "image")]')
     >>> links.extract()
     [u'<a href="image1.html">Name: My image 1 <br><img src="image1_thumb.jpg"></a>',
@@ -103,11 +107,11 @@ class MySpider(Spider):
      u'<a href="image3.html">Name: My image 3 <br><img src="image3_thumb.jpg"></a>',
      u'<a href="image4.html">Name: My image 4 <br><img src="image4_thumb.jpg"></a>',
      u'<a href="image5.html">Name: My image 5 <br><img src="image5_thumb.jpg"></a>']
-
+     
     >>> for index, link in enumerate(links):
         args = (index, link.xpath('@href').extract(), link.xpath('img/@src').extract())
         print 'Link number %d points to url %s and image %s' % args
-
+        
     Link number 0 points to url [u'image1.html'] and image [u'image1_thumb.jpg']
     Link number 1 points to url [u'image2.html'] and image [u'image2_thumb.jpg']
     Link number 2 points to url [u'image3.html'] and image [u'image3_thumb.jpg']
@@ -130,18 +134,21 @@ Selector中也有可以利用正则表达式提取数据的方法<code>.re()</co
 一定要记住，如果你要遍历的使用selectors或者XPath的表达式用"/"开头的，那么XPath表示的是文档中节点的据对路径，而不是相对路径。
 
 例如，如果你想要获取<code>`<div>`</code>标签下的所有<code>`<p>`</code>节点，首先你应该获取所有的`<div>`节点：
+    
     >>> divs = sel.xpath('//div')
 
 一开始，你可能会尝试下面这种错误的写法，它实际上不是获取`<div>`中的`<p>`节点，而是文档中所有的`<p>`节点：
-
+    
     >>> for p in divs.xpath('//p')  # this is wrong - gets all <p> from the whole document
     >>>     print p.extract()
 
 有一种优雅的方法是：
+    
     >>> for p in divs.xpath('.//p')  # extracts all <p> inside
     >>>     print p.extract()
 
 另外一种方法是获取所有直属的`<p>`节点：
+    
     >>> for p in divs.xpath('p') 
     >>>     print p.extract()
 
