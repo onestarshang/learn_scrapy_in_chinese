@@ -18,7 +18,7 @@ Scrapy 是一个可以抓取网站和从中提取结构化数据的应用框架�
 
 首先你需要定义你要获取的数据，在Scrapy中，Scrapy Items为你做好了一切。
 
-以下是我们定义的Itme：
+以下是我们定义的Item：
 
     from scrapy.item import Item, Field
  
