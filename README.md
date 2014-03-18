@@ -13,19 +13,19 @@ Fork from onestarshang/learn_scrapy_in_chinese @2014.03.04
 5 - BaseSpiders.md	
 6 - CrawlSpider.md
 7 - Command Line Tools.md
+8 - Selectors.md
+9 - Item Loader.md
 
 ---
 
 ##Our Following Plan:
 ---
 
-Link Extractor
+Link Extractor -->todo 
 
-Item Loader
+Selector  --> not finished yet..
 
-Selector
-
-Scrapy Shell
+Scrapy Shell -->todo
 
 
 ##If u r interested just join us!
