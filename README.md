@@ -22,11 +22,11 @@ Fork from onestarshang/learn_scrapy_in_chinese @2014.03.04
 
 9 - Item Loader.md
 
+10 - Link Extractor.md
+
 
 ##Our Following Plan:
 
-
-Link Extractor -->todo 
 
 Selector  --> not finished yet..
 
