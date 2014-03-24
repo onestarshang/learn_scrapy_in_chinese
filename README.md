@@ -24,13 +24,12 @@ Fork from onestarshang/learn_scrapy_in_chinese @2014.03.04
 
 10 - Link Extractor.md
 
+11 - Scrapy shell.md
 
 ##Our Following Plan:
 
 
 Selector  --> not finished yet..
-
-Scrapy Shell -->todo
 
 
 ##If u r interested just join us!
