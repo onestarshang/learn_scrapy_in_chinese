@@ -1,4 +1,4 @@
-#learn_scrapy_in_chinese
+###scrapy 中文手册
 
 Fork from onestarshang/learn_scrapy_in_chinese @2014.03.04
 
@@ -29,8 +29,6 @@ Fork from onestarshang/learn_scrapy_in_chinese @2014.03.04
 
 
 Selector  --> not finished yet..
-
-Scrapy Shell -->todo
 
 
 ##If u r interested just join us!
