@@ -1,6 +1,6 @@
 ###scrapy 中文手册
 
-Fork from onestarshang/learn_scrapy_in_chinese @2014.03.04
+Fork from onestarshang/learn_scrapy_in_chinese @2014.03.24
 
 ##What have we done:
 
@@ -24,11 +24,29 @@ Fork from onestarshang/learn_scrapy_in_chinese @2014.03.04
 
 10 - Link Extractor.md
 
+11 - Scrapy Shell.md
 
 ##Our Following Plan:
 
 
 Selector  --> not finished yet..
+
+###Built-in services
+- Logging --> todo
+  
+  Understand the simple logging facility provided by Scrapy.
+- Stats Collection
+
+  Collect statistics about your scraping crawler.
+- Sending e-mail --> todo
+
+  Send email notifications when certain events occur.
+- Telnet Console --> todo
+  
+  Inspect a running crawler using a built-in Python console.
+- Web Service --> todo
+
+  Monitor and control a crawler using a web service.
 
 
 ##If u r interested just join us!
