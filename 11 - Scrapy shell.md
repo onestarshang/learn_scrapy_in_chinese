@@ -4,11 +4,11 @@ scrapy shell 是一种交互式shell，你可以在上面快速的尝试和调�
 
 这种shell被用来测试XPath或者CSS表达式，可以它们是怎么工作的，是怎么样从你正在抓取的页面上提取数据的。当你正在写你的爬虫时，它也允许你交互式的测试你的表达式，而不必去运行你的爬虫来测试每个变化。
 
-一旦你熟悉了Scrapy shell，你将会看到，对于开展和调试你的爬虫，是一种很有价值的工具。
+一旦你熟悉了Scrapy shell，你将会看到，对于开发和调试你的爬虫，是一种很有价值的工具。
 
-如果你已经安装了[IPython](http://ipython.org/)，Scrapy shell将会使用IPython，而不是标准的Python console,[IPython](http://ipython.org/)控制台是非常强大的，它提供了智能的自动补充和可视化输出在这些爬虫上。
+如果你已经安装了[IPython](http://ipython.org/)，Scrapy shell将会使用IPython，而不是标准的Python console,[IPython](http://ipython.org/)控制台是非常强大的，除了其他事情之外它还提供了智能的自动补全和有颜色的输出。
 
-我们强烈建议安装IPtyon,特别的当你是工作在IPython擅长的Unix系统上，更多信息，请看[IPython installation guide](http://ipython.org/install.html)。
+我们强烈建议安装IPython,特别的当你的工作是在IPython擅长的Unix系统上，更多信息，请看[IPython installation guide](http://ipython.org/install.html)。
 
 ###启动shell###
 
@@ -26,19 +26,20 @@ Scrapy shell是一种常规的Python控制台（或者是IPython控制台，如�
 
 - shelp() - 打印一系列可用的快捷函数和对象的帮助信息
 - fetch(request_or_url) - 从给定的请求或者URL中获取一个新的response，并且有根据的更新所有相关的对象。
-- view(response) - 在你本地的web浏览器中打开一个给定的response来进行检查。这将会在response的body上增加一个[<base>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base)标签，这样外部的链接（例如images和样式表）可以合适的显示。注意，那将会在你的计算机中创建一个临时文件，这个临时文件将不会自动移除。
+- view(response) - 在你本地的web浏览器中打开一个给定的response来进行检查。这将会在response的body上增加一个[base](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base)标签，这样外部的链接（例如images和样式表）可以正常的显示。注意，那将会在你的计算机中创建一个临时文件，这个临时文件将不会自动移除。
 
 ###可用的Scrapy对象###
 
 Scrapy shell将会根据下载页面自动创建一些便捷的对象，像[Response](http://doc.scrapy.org/en/latest/topics/request-response.html#scrapy.http.Response)对象和[Selector](http://doc.scrapy.org/en/latest/topics/selectors.html#scrapy.selector.Selector)对象（对于HTML和XML内容来说）。
 
-这些对象是：
+这些对象是:
+
 - crawler - 当前的[Crawler](http://doc.scrapy.org/en/latest/topics/api.html#scrapy.crawler.Crawler)对象。
 - spider - 处理URL的爬虫，如果在当前URL中没找到爬虫，那么就是一个[Spider](http://doc.scrapy.org/en/latest/topics/spiders.html#scrapy.spider.Spider)对象。
 - request - 上一个获取的页面的[Request](http://doc.scrapy.org/en/latest/topics/request-response.html#scrapy.http.Request)对象。你可用通过[replace()](http://doc.scrapy.org/en/latest/topics/request-response.html#scrapy.http.Request.replace)方法来修改这个请求或者是通过fetch快捷函数来获取一个新的request对象而不用脱离shell。
 - response - 一个包含了上一个获取的页面的[Response](http://doc.scrapy.org/en/latest/topics/request-response.html#scrapy.http.Response)对象。
 - sel - 一个用上一个获取页面构造的[Selector](http://doc.scrapy.org/en/latest/topics/selectors.html#scrapy.selector.Selector)对象。
-- setting - 当前的[Scrapy settings](http://doc.scrapy.org/en/latest/topics/settings.html#topics-settings)。
+- settings - 当前的[Scrapy settings](http://doc.scrapy.org/en/latest/topics/settings.html#topics-settings)。
 
 ###shell会话的例子###
 
@@ -49,9 +50,9 @@ Scrapy shell将会根据下载页面自动创建一些便捷的对象，像[Resp
 首先，我们启动shell：
 
     scrapy shell 'http://scrapy.org' --nolog
- 
+
 然后，shell获取URL（通过Scrapy downloader），并且打印出一系列可用的对象和有用的快捷函数（你将会注意到这些行都以[s]前缀开始）。
- 
+
     [s] Available Scrapy objects:
     [s]   crawler    <scrapy.crawler.Crawler object at 0x1e16b50>
     [s]   item       {}
@@ -67,7 +68,7 @@ Scrapy shell将会根据下载页面自动创建一些便捷的对象，像[Resp
 
     >>>
 
-然后，我们可以实用这些对象：
+然后，我们可以使用这些对象：
 
     >>> sel.xpath("//h2/text()").extract()[0]
     u'Welcome to Scrapy'
@@ -100,15 +101,15 @@ Scrapy shell将会根据下载页面自动创建一些便捷的对象，像[Resp
 
 ###从爬虫来调用shell来检查响应###
 
-有时你想要在你的爬虫中的一个特定的点来检查正在被处理的响应，如果仅仅是检查是所期望的响应，这里便是。
+有时你想要在你的爬虫中的一个特定的点来检查正在被处理的响应，看你所期望的响应是否到那.
 
-这个可以通过 scrapy.shell.inspect_response 函数来实现。
+这个可以通过`scrapy.shell.inspect_response`函数来实现。
 
 这个例子展示了你将怎样从你的爬虫中来调用它。
 
     from scrapy.spider import Spider
-    
-    
+
+
     class MySpider(Spider):
         name = "myspider"
         start_urls = [
@@ -122,9 +123,9 @@ Scrapy shell将会根据下载页面自动创建一些便捷的对象，像[Resp
             if ".org" in response.url:
                 from scrapy.shell import inspect_response
                 inspect_response(response)
-        
+
             # Rest of parsing code.
-        
+
 当你运行爬虫的时候，你将会得到类似下面的信息：
 
     2014-01-23 17:48:31-0400 [myspider] DEBUG: Crawled (200) <GET http://example.com> (referer: None)
@@ -136,7 +137,7 @@ Scrapy shell将会根据下载页面自动创建一些便捷的对象，像[Resp
     >>> response.url
     'http://example.org'
 
-然后你可以检查提取代码是否起效：
+然后你可以检查提取代码是否工作：
 
     >>> sel.xpath('//h1[@class="fn"]')
     []
@@ -152,4 +153,4 @@ Scrapy shell将会根据下载页面自动创建一些便捷的对象，像[Resp
     2014-01-23 17:50:03-0400 [myspider] DEBUG: Crawled (200) <GET http://example.net> (referer: None)
     ...
 
-注意，你不能在这里用fetch快捷函数，因为shell屏蔽了Scrapy引擎。但是，当你退出shell后，爬虫依然会从它停止的地方继续爬取，如上所示。
+注意，你不能在这里用`fetch`快捷函数，因为shell屏蔽了Scrapy引擎。但是，当你退出shell后，爬虫依然会从它停止的地方继续爬取，如上所示。
