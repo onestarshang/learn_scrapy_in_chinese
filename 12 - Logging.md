@@ -31,42 +31,42 @@ Scrapy提供了5种日志级别：
 
 ###scrapy.log.module###
 
-scrapy.log.start(logfile=None, loglevel=None, logstdout=None)
+<b>scrapy.log.start(logfile=None, loglevel=None, logstdout=None)</b>
 
 启动日志处理机制。此方法必须在实际记录任何日志信息之前被调用，否则，在调用之前已经记录的信息会被遗失掉。
 
-Parameters:
-- logfile(str) - 用来日志输出到文件路径。如果忽略此参数，则会使用[LOG_FILE](http://doc.scrapy.org/en/latest/topics/settings.html#std:setting-LOG_FILE)设置。如果两个都没有设置，那么日志将会被输出到标准错误输出。
-- loglevel - 最低的日志级别。可用的值有[CRITICAL](http://doc.scrapy.org/en/latest/topics/logging.html#scrapy.log.CRITICAL)，[ERROR](http://doc.scrapy.org/en/latest/topics/logging.html#scrapy.log.ERROR)，[WARNING](http://doc.scrapy.org/en/latest/topics/logging.html#scrapy.log.WARNING)，[INFO](http://doc.scrapy.org/en/latest/topics/logging.html#scrapy.log.INFO)和[DEBUG](http://doc.scrapy.org/en/latest/topics/logging.html#scrapy.log.DEBUG)。
-- logstdout(boolean) - 如果为True，所有你应用程序到标准输出（和错误信息）都会被记录为日志。比如说，你"print 'hello'"，它将会被记录为日志。如果忽略此参数，将会使用[LOG_STDOUT](http://doc.scrapy.org/en/latest/topics/settings.html#std:setting-LOG_STDOUT)设置。
+<b>Parameters</b>:
+- <b>logfile</b>(str) - 用来日志输出到文件路径。如果忽略此参数，则会使用[LOG_FILE](http://doc.scrapy.org/en/latest/topics/settings.html#std:setting-LOG_FILE)设置。如果两个都没有设置，那么日志将会被输出到标准错误输出。
+- <b>loglevel</b> - 最低的日志级别。可用的值有[CRITICAL](http://doc.scrapy.org/en/latest/topics/logging.html#scrapy.log.CRITICAL)，[ERROR](http://doc.scrapy.org/en/latest/topics/logging.html#scrapy.log.ERROR)，[WARNING](http://doc.scrapy.org/en/latest/topics/logging.html#scrapy.log.WARNING)，[INFO](http://doc.scrapy.org/en/latest/topics/logging.html#scrapy.log.INFO)和[DEBUG](http://doc.scrapy.org/en/latest/topics/logging.html#scrapy.log.DEBUG)。
+- <b>logstdout</b>(boolean) - 如果为True，所有你应用程序到标准输出（和错误信息）都会被记录为日志。比如说，你"print 'hello'"，它将会被记录为日志。如果忽略此参数，将会使用[LOG_STDOUT](http://doc.scrapy.org/en/latest/topics/settings.html#std:setting-LOG_STDOUT)设置。
 
-scrapy.log.msg(message, level=INFO, spider=None)
+<b>scrapy.log.msg(message, level=INFO, spider=None)</b>
 
 记录日志信息。
 
-Parameters:
-- message(str) - 要记录到日志信息。
-- level - 记录此日志信息到日志级别。看[LOG LEVEL](http://doc.scrapy.org/en/latest/topics/logging.html#topics-logging-levels)。
-- spider([Spider](http://doc.scrapy.org/en/latest/topics/spiders.html#scrapy.spider.Spider)对象) - 记录此日志信息到spider。这个参数应该总是在记录和spider相关到信息时被使用。
+<b>Parameters</b>:
+- <b>message</b>(str) - 要记录到日志信息。
+- <b>level</b> - 记录此日志信息到日志级别。看[LOG LEVEL](http://doc.scrapy.org/en/latest/topics/logging.html#topics-logging-levels)。
+- <b>spider</b>([Spider](http://doc.scrapy.org/en/latest/topics/spiders.html#scrapy.spider.Spider)对象) - 记录此日志信息到spider。这个参数应该总是在记录和spider相关到信息时被使用。
 
 
-scrapy.log.CRITICAL
+<b>scrapy.log.CRITICAL</b>
 
   对于critical errors到日志级别。
 
-scrapy.log.ERROR
+<b>scrapy.log.ERROR</b>
 
   对于一般错误到日志级别。
 
-scrapy.log.WARNING
+<b>scrapy.log.WARNING</b>
 
   对于警告信息到日志级别。
 
-scrapy.log.INFO
+<b>scrapy.log.INFO</b>
 
   对于提示信息到日志级别（推荐在生产部署环境中使用）。
 
-scrapy.log.DEBUG
+<b>scrapy.log.DEBUG</b>
 
   对于调试信息到日志级别（推荐在开发环境中使用）。
 
