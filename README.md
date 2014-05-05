@@ -26,15 +26,15 @@ Fork from onestarshang/learn_scrapy_in_chinese @2014.03.24
 
 11 - Scrapy Shell.md
 
+12 - Logging.md
+
 ##Our Following Plan:
 
 
 Selector  --> not finished yet..
 
 ###Built-in services
-- Logging --> todo
-  
-  Understand the simple logging facility provided by Scrapy.
+
 - Stats Collection
 
   Collect statistics about your scraping crawler.
