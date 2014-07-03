@@ -59,7 +59,7 @@ Scrapy 是一个可以抓取网站和从中提取结构化数据的应用框架�
 获取描述的XPath是这样的：
 
     //div[@id='description']
-如果想知道更多关于XPath的信息，请看XPaht参考。
+如果想知道更多关于XPath的信息，请看XPath参考。
 
 最后，这是我们的Spider代码：
 
